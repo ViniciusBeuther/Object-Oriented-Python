@@ -8,10 +8,10 @@
 #   - a altura e o raio do tanque serão informados pelo usuário
 #   - mostre na tela a área do tanque, a quantidade de latas e o custo total
 
-from math import ceil
+from math import ceil, pi
 h = float(input('Digite a altura do tanque: '))
 r = float(input('Digite o raio do tanque: '))
-areaTanque = (3.14 * pow(h,2)) * h
+areaTanque = 2 * pi * r * (r+h)
 
 print('\n-----INFORMAÇÕES-----')
 
@@ -20,4 +20,4 @@ if h < 0 or r < 0:
 else:
     litrosTinta = areaTanque/4
     latas = ceil(areaTanque/20)
-    print(f'Area do tanque = {areaTanque} m2\nTotal de tinta = {litrosTinta:.2f}L\nNumero de latas: {latas}\nTotal: R${latas*120:.2f}')
+    print(f'Area do tanque = {areaTanque:.2f} m2\nTotal de tinta = {litrosTinta:.2f}L\nNumero de latas: {latas}\nTotal: R${latas*120:.2f}')
