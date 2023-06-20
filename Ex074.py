@@ -1,5 +1,5 @@
 # LISTA4 - FUNCOES
-# receba 4 notas e retorne a media
+# 3) receba 4 notas e retorne a media
 
 def media(notas):
     soma = 0
