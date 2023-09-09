@@ -78,12 +78,12 @@ class patient(person):
             transactionList.append(historyTuple)
             return self.__amount
 
-def validateCPF():
-    patientCpf = input('What is your CPF number: ')
-    if CPF.validate(patientCpf) == True:
-        print(f"O CPF {CPF.format(cpf)} é Válido!")
-    else:
-        print(f"O CPF {CPF.format(cpf)} Inválido!")
+def validateCPF(cpf):
+    while True:
+        if CPF.validate(cpf) == True:
+            return 'True'
+        else:
+            return 'False'
 
 def showDashboard():
     print('\n')
@@ -97,17 +97,27 @@ def showDashboard():
     print('\t\t__________________________________')
 
 
-print('|-----REGISTER-----|')
-print('First, we need to register you =)')
-print('Please answer the following questions')
+print('---------------REGISTER---------------')
+print('Welcome user to our banking system =)\n')
+print('First, answer some quick questions...\n')
+
 patientName = input('Your name: ')
 patientAge = input('Your age: ')
 patientAge = patientAge + ' years old'
 patientBirthday = input('When is your birthday (mm/dd): ')
 patientAddress = input('Which is your address: ')
 patientGender = input('Which is your gender: ')
-#patientCpf = input('What is your CPF number: ')
-validateCPF()
+
+while True:
+    patientCpf = input('What is your CPF number: ')
+
+    if validateCPF(patientCpf) == 'True':
+        print('-----Valid CPF-----')
+        break
+    else:
+        print('-----INVALID CPF! Try again...-----')
+
+
 patientAmount = float(input('Initial deposit amount: $'))
 newPatient = patient(patientName, patientAge, patientGender, patientAddress, patientCpf, patientBirthday,patientAmount)
 
@@ -140,8 +150,7 @@ while True:
         print('3- Change your age')
         print('4- Change your address')
         print('5- Change your gender')
-        print('6- Change your CPF')
-        print('7- Return')
+        print('6- Return')
         choice = int(input('What you would like to do: '))
         while True:
             if choice == 1:
@@ -175,12 +184,6 @@ while True:
                 break
 
             elif choice == 6:
-                newCpf = input('Please, type your new CPF: ')
-                newPatient.setCpf(newCpf)
-                print('-----Your CPF was successful changed!-----')
-                break
-
-            elif choice == 7:
                 break
 
     elif mainChoice == 3:
@@ -202,11 +205,6 @@ while True:
         print('\t\t_____________________________')
         print(f'\t\t|  Amount: ${newPatient.getAmount():<17}|')
         print('\t\t_____________________________')
-
-
-
-
-
 
 
 
